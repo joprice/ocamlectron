@@ -2,7 +2,7 @@
 
 all: clean_bc build doc
 
-build: 
+build:
 	dune build
 
 install:
@@ -20,6 +20,9 @@ clean_bc:
 install_example: all
 	(cd example; npm install)
 
-example: all 
+example: all
 	dune build example/main.bc.js
 	cp _build/default/example/main.bc.js example/main.bc.js
+
+format:
+	dune build @fmt --auto-promote

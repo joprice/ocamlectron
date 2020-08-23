@@ -1,11 +1,12 @@
 (** Versions allowed *)
 
-open Js
+open Js_of_ocaml
 
-class type versions = object 
+class type versions =
+  object
+    method chrome : Js.js_string Js.t Js.readonly_prop
 
-  method chrome : (js_string t) readonly_prop
-  method electron : (js_string t) readonly_prop
-end
+    method electron : Js.js_string Js.t Js.readonly_prop
+  end
 
 type t = versions Js.t

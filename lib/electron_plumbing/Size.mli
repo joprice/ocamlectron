@@ -1,10 +1,12 @@
 (** Describe a Size *)
 
-open Js 
+open Js_of_ocaml
 
-class type size = object 
-  method width : int readonly_prop
-  method height : int readonly_prop
-end
+class type size =
+  object
+    method width : int Js.readonly_prop
+
+    method height : int Js.readonly_prop
+  end
 
 type t = size Js.t

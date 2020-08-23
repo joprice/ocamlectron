@@ -11,8 +11,8 @@
 (** {2 Internals types} *)
 
 (** POSIX Signals *)
-type t = 
-  | SIGHUP 
+type t =
+  | SIGHUP
   | SIGINT
   | SIGQUIT
   | SIGILL
@@ -20,20 +20,20 @@ type t =
   | SIGFPE
   | SIGKILL
   | SIGSEGV
-  | SIGPIPE 
+  | SIGPIPE
   | SIGALRM
   | SIGTERM
-  | SIGUSR1 
-  | SIGUSR2 
-  | SIGCHLD 
-  | SIGSTOP 
-  | SIGSTP 
-  | SIGTTIN 
-  | SIGTTOU 
+  | SIGUSR1
+  | SIGUSR2
+  | SIGCHLD
+  | SIGSTOP
+  | SIGSTP
+  | SIGTTIN
+  | SIGTTOU
   | SIGVTALRM
   | SIGXCPU
-  | SIGXFSZ 
-  | SIGWINCH 
+  | SIGXFSZ
+  | SIGWINCH
   | SIGBREAK
   | SIGBUS
 

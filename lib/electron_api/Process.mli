@@ -13,28 +13,23 @@
 type t = Electron_plumbing.Process.t
 (** An alias of [Electron_plumbing.process] *)
 
+type process_kind = [ `Browser | `Renderer | `Unknown of string ]
 (** The current process type *)
-type process_kind = [ 
-    `Browser 
-  | `Renderer
-  | `Unknown of string
-]
 
-(** Kind of Architecture *)
-type architecture = [
-    `Arm 
-  | `Arm64 
-  | `Ia32 
-  | `Mips 
-  | `Mipsel 
-  | `Ppc 
-  | `Ppc64 
+type architecture =
+  [ `Arm
+  | `Arm64
+  | `Ia32
+  | `Mips
+  | `Mipsel
+  | `Ppc
+  | `Ppc64
   | `S390
-  | `S390x 
+  | `S390x
   | `X32
   | `X64
-  | `Unknown of string
-]
+  | `Unknown of string ]
+(** Kind of Architecture *)
 
 (** {2 Objects} *)
 
@@ -43,7 +38,7 @@ val process : t
 
 (** {2 Methods} *)
 
-val abort : unit -> unit 
+val abort : unit -> unit
 (** causes the Node.js process to exit immediately and generate a core file. *)
 
 val allowed_node_environment_flags : unit -> string array
@@ -54,10 +49,10 @@ val arch : unit -> architecture
     for which the Node.js binary was compiled 
 *)
 
-val argv : unit -> string array 
+val argv : unit -> string array
 (** Returns [argv], the passed arguments array *)
 
-val argv0 : unit -> string 
+val argv0 : unit -> string
 (**  a read-only copy of the original value of [argv[0]] passed 
      when Node.js starts. 
 *)
@@ -68,18 +63,18 @@ val chdir : string -> unit
     exist). 
 *)
 
-val cwd : unit -> string 
+val cwd : unit -> string
 (** Returns the current working directory of the Node.js process. *)
 
-val connected : unit -> bool 
+val connected : unit -> bool
 (** [true] the Node.js process is spawned with an IPC channel, otherwise 
     [false].
 *)
 
-val debug_port : unit -> int 
+val debug_port : unit -> int
 (** The port used by Node.js's debugger when enabled. *)
 
-val set_debug_port : int -> unit 
+val set_debug_port : int -> unit
 (** Set the debug port. *)
 
 val exec_argv : unit -> string array
@@ -93,18 +88,18 @@ val exec_argv : unit -> string array
     the same execution environment as the parent. 
 *)
 
-val exec_path : unit -> string 
+val exec_path : unit -> string
 (** Returns the absolute pathname of the executable that started the 
      Node.js process. 
 *)
 
-val exit_code : unit -> int 
+val exit_code : unit -> int
 (** A number which will be the process exit code, when the process either 
       exits gracefully, or is exited via [process.exit()] without 
       specifying a code.
 *)
 
-val set_exit_code : int -> unit 
+val set_exit_code : int -> unit
 (** Change the default [exit_code] value. *)
 
 val exit : ?code:int -> unit -> unit
@@ -137,10 +132,10 @@ val release : unit -> Electron_plumbing.Struct.Release.t
     including URLs for the source tarball and headers-only tarball. 
 *)
 
-val crash : unit -> unit 
+val crash : unit -> unit
 (** Causes the main thread of the current process crash. *)
 
-val hang : unit -> unit 
+val hang : unit -> unit
 (** Causes the main thread of the current process hang. *)
 
 val default_app : unit -> bool
@@ -158,18 +153,18 @@ val kind : unit -> process_kind
 val versions : unit -> Electron_plumbing.Struct.Versions.t
 (** Get the versions object *)
 
-val chrome_version : unit -> string 
+val chrome_version : unit -> string
 (** Get the version of chrome *)
 
-val electron_version : unit -> string 
+val electron_version : unit -> string
 (** Get the version of electron *)
 
-val mas : unit -> bool 
+val mas : unit -> bool
 (** For Mac App Store build, this property is [true], for other builds 
     it is [false]. 
 *)
 
-val windows_store : unit -> bool 
+val windows_store : unit -> bool
 (** For Windows store build, this property is [true], for other builds 
     it is [false]. 
 *)
@@ -177,34 +172,34 @@ val windows_store : unit -> bool
 val enable_asar : unit -> unit
 (** Enable [asar] support *)
 
-val disable_asar : unit -> unit 
+val disable_asar : unit -> unit
 (** Disable [asar] support *)
 
 val asar_enabled : unit -> bool
 (** Returns [true] if [asar] is supported, [false] otherwise *)
 
-val enable_deprecation_warning : unit -> unit 
+val enable_deprecation_warning : unit -> unit
 (** Enable [deprecation warning] *)
 
-val disable_deprecation_warning : unit -> unit 
+val disable_deprecation_warning : unit -> unit
 (** Disable [deprecation warning] *)
 
 val deprecation_warning_enabled : unit -> bool
 (** Returns [true] if [deprecation_warning] is enabled, [false] otherwise *)
 
-val enable_throw_deprecation : unit -> unit 
+val enable_throw_deprecation : unit -> unit
 (** Enable the throwing of error when deprecation *)
 
-val disable_throw_deprecation : unit -> unit 
+val disable_throw_deprecation : unit -> unit
 (** Disable the throwing of error when deprecation *)
 
 val throw_deprecation_enabled : unit -> bool
 (** Returns [true] if [throwing deprecation] is enabled, [false] otherwise *)
 
-val enable_trace_deprecation : unit -> unit 
+val enable_trace_deprecation : unit -> unit
 (** Enable tracing deprecation *)
 
-val disable_trace_deprecation : unit -> unit 
+val disable_trace_deprecation : unit -> unit
 (** Disable tracing deprecation *)
 
 val trace_deprecation_enabled : unit -> bool
@@ -213,12 +208,12 @@ val trace_deprecation_enabled : unit -> bool
 val cpu_usage : unit -> Electron_plumbing.Struct.CPUUsage.t
 (** Get the [CPUUSage] object *)
 
-val percent_cpu_usage : unit -> int 
+val percent_cpu_usage : unit -> int
 (** Percentage of CPU used since the last call to getCPUUsage. 
     First call returns [0]. 
 *)
 
-val cpu_idle_wakeup : unit -> int 
+val cpu_idle_wakeup : unit -> int
 (** The number of average idle cpu wakeups per second since 
     the last call to getCPUUsage. First call returns [0]. 
     Will always return [0] on Windows. 
@@ -230,7 +225,7 @@ val io_counters : unit -> Electron_plumbing.Struct.IOCounters.t
     Get the [IOCounters] object 
 *)
 
-val process_memory_info : unit -> Electron_plumbing.Struct.ProcessMemoryInfo.t 
+val process_memory_info : unit -> Electron_plumbing.Struct.ProcessMemoryInfo.t
 (** Returns an object giving memory usage statistics about the 
     current process. Note that all statistics are reported in Kilobytes. 
 *)
@@ -240,7 +235,7 @@ val system_memory_info : unit -> Electron_plumbing.Struct.SystemMemoryInfo.t
     system. Note that all statistics are reported in Kilobytes.
 *)
 
-val set_fd_limit : int -> unit 
+val set_fd_limit : int -> unit
 (** Sets the file descriptor soft limit to maxDescriptors or the 
     OS hard limit, whichever is lower for the current process. 
 *)

@@ -1,5 +1,5 @@
-type t = 
-  | SIGHUP 
+type t =
+  | SIGHUP
   | SIGINT
   | SIGQUIT
   | SIGILL
@@ -7,45 +7,45 @@ type t =
   | SIGFPE
   | SIGKILL
   | SIGSEGV
-  | SIGPIPE 
+  | SIGPIPE
   | SIGALRM
   | SIGTERM
-  | SIGUSR1 
-  | SIGUSR2 
-  | SIGCHLD 
-  | SIGSTOP 
-  | SIGSTP 
-  | SIGTTIN 
-  | SIGTTOU 
+  | SIGUSR1
+  | SIGUSR2
+  | SIGCHLD
+  | SIGSTOP
+  | SIGSTP
+  | SIGTTIN
+  | SIGTTOU
   | SIGVTALRM
   | SIGXCPU
-  | SIGXFSZ 
-  | SIGWINCH 
+  | SIGXFSZ
+  | SIGWINCH
   | SIGBREAK
   | SIGBUS
 
-let to_string = function 
-  | SIGHUP    -> "SIGHUP"
-  | SIGINT    -> "SIGINT"
-  | SIGQUIT   -> "SIGQUIT"
-  | SIGILL    -> "SIGILL"
-  | SIGABRT   -> "SIGABRT"
-  | SIGFPE    -> "SIGFPE"
-  | SIGKILL   -> "SIGKILL"
-  | SIGSEGV   -> "SIGSEGV"
-  | SIGPIPE   -> "SIGPIPE"
-  | SIGALRM   -> "SIGALRM"
-  | SIGTERM   -> "SIGTERM"
-  | SIGUSR1   -> "SIGUSR1" 
-  | SIGUSR2   -> "SIGUSR2"
-  | SIGCHLD   -> "SIGCHLD"
-  | SIGSTOP   -> "SIGSTOP"
-  | SIGSTP    -> "SIGSTP"
-  | SIGTTIN   -> "SIGTTIN"
-  | SIGTTOU   -> "SIGTTOU"
+let to_string = function
+  | SIGHUP -> "SIGHUP"
+  | SIGINT -> "SIGINT"
+  | SIGQUIT -> "SIGQUIT"
+  | SIGILL -> "SIGILL"
+  | SIGABRT -> "SIGABRT"
+  | SIGFPE -> "SIGFPE"
+  | SIGKILL -> "SIGKILL"
+  | SIGSEGV -> "SIGSEGV"
+  | SIGPIPE -> "SIGPIPE"
+  | SIGALRM -> "SIGALRM"
+  | SIGTERM -> "SIGTERM"
+  | SIGUSR1 -> "SIGUSR1"
+  | SIGUSR2 -> "SIGUSR2"
+  | SIGCHLD -> "SIGCHLD"
+  | SIGSTOP -> "SIGSTOP"
+  | SIGSTP -> "SIGSTP"
+  | SIGTTIN -> "SIGTTIN"
+  | SIGTTOU -> "SIGTTOU"
   | SIGVTALRM -> "SIGVTALRM"
-  | SIGXCPU   -> "SIGXCPU"
-  | SIGXFSZ   -> "SIGXFSZ "
-  | SIGWINCH  -> "SIGWINCH"
-  | SIGBREAK  -> "SIGBREAK"
-  | SIGBUS    -> "SIGBUS"
+  | SIGXCPU -> "SIGXCPU"
+  | SIGXFSZ -> "SIGXFSZ "
+  | SIGWINCH -> "SIGWINCH"
+  | SIGBREAK -> "SIGBREAK"
+  | SIGBUS -> "SIGBUS"

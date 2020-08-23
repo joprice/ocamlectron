@@ -1,6 +1,7 @@
 (library
-  (name electron_render)
-  (public_name ocamlectron.render)
-  (synopsis "Render process")
-  (preprocess (pps js_of_ocaml-ppx lwt_ppx))
-  (libraries js_of_ocaml-lwt electron_plumbing electron_api))
+ (name electron_render)
+ (public_name ocamlectron.render)
+ (synopsis "Render process")
+ (preprocess
+  (pps js_of_ocaml-ppx lwt_ppx))
+ (libraries js_of_ocaml-lwt electron_plumbing electron_api))

@@ -1,13 +1,12 @@
+open Js_of_ocaml
 (** Helper to work with optional values (empty values or not) to 
     deal with [option], [opt] and [optdef] with a common API. *)
 
-
- (** {2 Interface} *)
+(** {2 Interface} *)
 
 (** Common interface of optional values *)
-module type OPTION = 
-sig
 
+module type OPTION = sig
   (** {3 Types} *)
 
   type 'a t
@@ -15,13 +14,13 @@ sig
 
   (** {3 Functions} *)
 
-  val empty : 'a t 
+  val empty : 'a t
   (** Returns the empty values of the ['a t] *)
 
-  val pure : 'a -> 'a t 
+  val pure : 'a -> 'a t
   (** Consider a value as an optional value. *)
 
-  val map : 'a t -> ('a -> 'b)-> 'b t
+  val map : 'a t -> ('a -> 'b) -> 'b t
   (** Apply a function to an optional value if it is available. 
       Returns the result of the application. *)
 
@@ -65,25 +64,21 @@ sig
    *)
 
   (** Infix operators *)
-  module Infix : 
-  sig 
-    val (>>=) : 'a t -> ('a -> 'b t) -> 'b t
+  module Infix : sig
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
     (** Infix version of [OPTIONAL.bind] *)
-    
-    val (>|=) : 'a t -> ('a -> 'b) -> 'b t
+
+    val ( >|= ) : 'a t -> ('a -> 'b) -> 'b t
     (** Infix version of [OPTIONAL.map] *)
 
-    val (>>!) : 'a t -> (unit -> 'a) -> 'a
+    val ( >>! ) : 'a t -> (unit -> 'a) -> 'a
     (** Infix version of [OPTIONAL.get] *)
   end
 
   include module type of Infix
-
 end
 
-
 (** {2 Implementations} *)
-
 
 module Option : OPTION with type 'a t = 'a option
 (** Optional for ['a option]. *)

@@ -1,18 +1,12 @@
 (library
-  (name ocamlectron)
-  (public_name ocamlectron)
-  (synopsis "A small framework to build application using Electron")
-  (preprocess (pps js_of_ocaml-ppx lwt_ppx))
-  (libraries 
-    js_of_ocaml-lwt 
-    electron_plumbing
-    electron_api 
-    electron_main 
-    electron_render
-  )
-)
+ (name ocamlectron)
+ (public_name ocamlectron)
+ (synopsis "A small framework to build application using Electron")
+ (preprocess
+  (pps js_of_ocaml-ppx lwt_ppx))
+ (libraries js_of_ocaml-lwt electron_plumbing electron_api electron_main
+   electron_render))
 
 (documentation
  (package ocamlectron)
- (mld_files index)
-)
+ (mld_files index))

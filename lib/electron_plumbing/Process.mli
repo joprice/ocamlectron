@@ -8,49 +8,87 @@
     - {{: https://electronjs.org/docs/api/process }  ElectronJS : documentation for [process] } 
 *)
 
-open Js
+open Js_of_ocaml
 
-class type process = object
+class type process =
+  object
+    method abort : unit -> unit Js.meth
 
-  method abort : unit -> unit meth
-  method allowedNodeEnvironmentFlags : (js_string t) Builtin.Set.t readonly_prop
-  method arch : (js_string t) readonly_prop
-  method argv : (js_string t js_array t) readonly_prop
-  method argv0 : js_string t readonly_prop
-  method chdir : js_string t -> unit meth
-  method cwd : unit -> (js_string t) meth
-  method connected : (bool t) readonly_prop
-  method debugPort : int prop
-  method execArgv : (js_string t js_array t) readonly_prop
-  method execPath : (js_string t) readonly_prop
-  method exitCode : int prop
-  method exit : int Optdef.t -> unit meth
-  method getuid : unit -> int meth
-  method kill : int -> (js_string t) Optdef.t -> unit meth
-  method memoryUsage : unit -> MemoryUsage.t meth
-  method platform : (js_string t) readonly_prop
-  method pid : int readonly_prop
-  method ppid : int readonly_prop
-  method release : Release.t readonly_prop
-  method defaultApp : (bool Optdef.t) readonly_prop
-  method mas : (bool Optdef.t) readonly_prop
-  method windowsStore : (bool Optdef.t) readonly_prop
-  method noAsar : (bool t) prop
-  method noDeprecation : (bool t) prop
-  method resourcesPath : (js_string t) readonly_prop
-  method throwDeprecation : (bool t) prop
-  method traceDeprecation : (bool t) prop
-  method traceProcessWarnings : (bool t) prop 
-  method _type : (js_string t) readonly_prop
-  method versions : Versions.t readonly_prop
-  method crash : unit -> unit meth
-  method getCPUUsage : unit -> CPUUsage.t meth
-  method getIOCounters : unit -> IOCounters.t meth
-  method getProcessMemoryInfo : unit -> (ProcessMemoryInfo.t) meth
-  method getSystemMemoryInfo : unit -> (SystemMemoryInfo.t) meth
-  method hang : unit -> unit meth
-  method setFdLimit : int -> unit meth
-end
+    method allowedNodeEnvironmentFlags :
+      Js.js_string Js.t Builtin.Set.t Js.readonly_prop
 
-(** Main type *)
+    method arch : Js.js_string Js.t Js.readonly_prop
+
+    method argv : Js.js_string Js.t Js.js_array Js.t Js.readonly_prop
+
+    method argv0 : Js.js_string Js.t Js.readonly_prop
+
+    method chdir : Js.js_string Js.t -> unit Js.meth
+
+    method cwd : unit -> Js.js_string Js.t Js.meth
+
+    method connected : bool Js.t Js.readonly_prop
+
+    method debugPort : int Js.prop
+
+    method execArgv : Js.js_string Js.t Js.js_array Js.t Js.readonly_prop
+
+    method execPath : Js.js_string Js.t Js.readonly_prop
+
+    method exitCode : int Js.prop
+
+    method exit : int Js.Optdef.t -> unit Js.meth
+
+    method getuid : unit -> int Js.meth
+
+    method kill : int -> Js.js_string Js.t Js.Optdef.t -> unit Js.meth
+
+    method memoryUsage : unit -> MemoryUsage.t Js.meth
+
+    method platform : Js.js_string Js.t Js.readonly_prop
+
+    method pid : int Js.readonly_prop
+
+    method ppid : int Js.readonly_prop
+
+    method release : Release.t Js.readonly_prop
+
+    method defaultApp : bool Js.Optdef.t Js.readonly_prop
+
+    method mas : bool Js.Optdef.t Js.readonly_prop
+
+    method windowsStore : bool Js.Optdef.t Js.readonly_prop
+
+    method noAsar : bool Js.t Js.prop
+
+    method noDeprecation : bool Js.t Js.prop
+
+    method resourcesPath : Js.js_string Js.t Js.readonly_prop
+
+    method throwDeprecation : bool Js.t Js.prop
+
+    method traceDeprecation : bool Js.t Js.prop
+
+    method traceProcessWarnings : bool Js.t Js.prop
+
+    method _type : Js.js_string Js.t Js.readonly_prop
+
+    method versions : Versions.t Js.readonly_prop
+
+    method crash : unit -> unit Js.meth
+
+    method getCPUUsage : unit -> CPUUsage.t Js.meth
+
+    method getIOCounters : unit -> IOCounters.t Js.meth
+
+    method getProcessMemoryInfo : unit -> ProcessMemoryInfo.t Js.meth
+
+    method getSystemMemoryInfo : unit -> SystemMemoryInfo.t Js.meth
+
+    method hang : unit -> unit Js.meth
+
+    method setFdLimit : int -> unit Js.meth
+  end
+
 type t = process Js.t
+(** Main type *)

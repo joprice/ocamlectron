@@ -1,12 +1,13 @@
 (** Data about CPU usage *)
 
-open Js 
+open Js_of_ocaml
 
-class type cpu_usage = object 
+class type cpu_usage =
+  object
+    method percentCPUUsage : int Js.readonly_prop
 
-  method percentCPUUsage : int readonly_prop
-  method idleWakeupsPerSecond : int readonly_prop
-end
+    method idleWakeupsPerSecond : int Js.readonly_prop
+  end
 
-(** Main type *)
 type t = cpu_usage Js.t
+(** Main type *)

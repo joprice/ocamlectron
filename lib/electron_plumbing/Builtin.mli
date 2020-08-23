@@ -1,63 +1,62 @@
 (** Built-in JavaScript 's object  *)
 
+open Js_of_ocaml
 
-open Js
-
-module Promise : 
-sig 
-
-  class type ['a] promise = object 
-    method _then : ('a -> 'b promise t) -> 'b promise t meth
-  end
+module Promise : sig
+  class type ['a] promise =
+    object
+      method _then : ('a -> 'b promise Js.t) -> 'b promise Js.t Js.meth
+    end
 
   type 'a t = 'a promise Js.t
 end
 
-module Set : 
-sig
+module Set : sig
+  val constr : ('a Js.js_array -> 'a Js.t Js.t) Js.constr
 
-  val constr : ('a js_array -> 'a t Js.t) constr
+  class type ['a] set =
+    object
+      method size : int Js.readonly_prop
 
-  class type ['a] set = object 
+      method add : 'a -> unit Js.meth
 
-    method size : int readonly_prop
-    method add : 'a -> unit meth
-    method clear : unit -> unit meth
-    method delete : 'a -> unit meth
-    method forEach : 
-      ('a -> 'a Optdef.t  -> 'a t Js.t Optdef.t -> unit) callback
-      -> unit meth
+      method clear : unit -> unit Js.meth
 
-    method has : 'a -> (bool Js.t) meth
-  end
+      method delete : 'a -> unit Js.meth
+
+      method forEach :
+        ('a -> 'a Js.Optdef.t -> 'a Js.t Js.t Js.Optdef.t -> unit) Js.callback ->
+        unit Js.meth
+
+      method has : 'a -> bool Js.t Js.meth
+    end
 
   type 'a t = 'a set Js.t
 
   val make : 'a list -> 'a t
-  val iteri : (int -> 'a -> unit) -> 'a t -> unit 
 
+  val iteri : (int -> 'a -> unit) -> 'a t -> unit
 end
 
-module Buffer : 
-sig 
+module Buffer : sig
+  class type buffer =
+    object
 
-  class type buffer = object 
-    (** To be done *)
-  end
+      (** To be done *)
+    end
 
   type t = buffer Js.t
-
 end
 
-module Error : 
-sig 
+module Error : sig
+  class type error =
+    object
+      method message : Js.js_string Js.t Js.readonly_prop
 
-  class type error = object
-    method message : js_string t readonly_prop
-    method stack: js_string t readonly_prop
-    method code : js_string t readonly_prop
-  end
+      method stack : Js.js_string Js.t Js.readonly_prop
+
+      method code : Js.js_string Js.t Js.readonly_prop
+    end
 
   type t = error Js.t
-
 end
