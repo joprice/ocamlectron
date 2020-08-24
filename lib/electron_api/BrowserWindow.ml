@@ -172,7 +172,7 @@ let make
     ?(title_bar_style = `Default)
     ?fullscreen_window_title
     ?thick_frame
-    ?(vibrancy = `AppearanceBased)
+    ?vibrancy 
     ?zoom_to_page_width
     ?tabbing_identifier
     electron = 
@@ -216,7 +216,7 @@ let make
     ~title_bar_style:(title_bar_style_to_string title_bar_style)
     ?fullscreen_window_title
     ?thick_frame
-    ~vibrancy:(vibrancy_to_string vibrancy)
+    ?vibrancy:(Option.map (fun f -> vibrancy_to_string f) vibrancy)
     ?zoom_to_page_width
     ?tabbing_identifier
     (electron ##. _BrowserWindow_fromOpts)
