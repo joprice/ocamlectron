@@ -42,7 +42,7 @@ let make_browser_window
     ?(title_bar_style = `Default)
     ?fullscreen_window_title
     ?thick_frame
-    ?(vibrancy = `AppearanceBased)
+    ?vibrancy
     ?zoom_to_page_width
     ?tabbing_identifier
     () = 
@@ -86,7 +86,7 @@ let make_browser_window
     ~title_bar_style
     ?fullscreen_window_title
     ?thick_frame
-    ~vibrancy
+    ?vibrancy
     ?zoom_to_page_width
     ?tabbing_identifier
     obj
