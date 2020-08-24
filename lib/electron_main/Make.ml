@@ -24,12 +24,16 @@ end = struct
       (fun w -> 
          let open Api.BrowserWindow in
          let load_url win url = 
+           print_endline ("loading url " ^ url);
            let u = Js.string url in 
-          win ## loadFile u in
+            win ## loadFile u in
           load_url w F.file;
          (*load_file w F.file;*)
          F.init electron app w;
-         on w Close (fun _ -> window := Js.null)
+         on w Close (fun _ -> 
+           print_endline "closing window";
+           window := Js.null
+      )
       )
   let start () =  
     let open Api.App in 
